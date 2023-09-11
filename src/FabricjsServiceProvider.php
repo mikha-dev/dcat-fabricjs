@@ -9,7 +9,7 @@ use Dcat\Admin\Form as BaseForm;
 class FabricjsServiceProvider extends ServiceProvider
 {
 	protected $js = [
-	    'fabric.min.js'
+	    'fabric.all.min.js'
     ];
 	protected $css = [
 	];

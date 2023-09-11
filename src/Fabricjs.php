@@ -14,6 +14,9 @@ class Fabricjs extends Field
         'width' => 400
     ];    
 
+    protected $elements = [];
+    protected string $bgImage = '';
+
     protected function formatOptions()
     {
         return $this->options;
@@ -21,24 +24,31 @@ class Fabricjs extends Field
 
     public function backgroundImage(string $imageUrl)
     {
-        return $this->options['bg-image'] = $imageUrl;
+        $this->bgImage = $imageUrl;
+
+        return $this;
     }
 
-    public function textElements(string $elements[])
+    public function textElements($elements = [])
     {
-        return $this->elements = $elements;
+        $this->elements = $elements;
+
+        return $this;
     }
 
     public function height(int $height)
     {
-        return $this->mergeOptions(['height' => $height]);
+        $this->mergeOptions(['height' => $height]);
+
+        return $this;
     }
 
     public function render()
     {
         $this->addVariables([
-            'options' => JavaScript::format($this->formatOptions()),
+            'options' => $this->options,
             'elements' => $this->elements,
+            'bg_image' => $this->bgImage,
         ]);  
         return parent::render();
     }

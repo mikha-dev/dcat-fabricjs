@@ -1,9 +1,9 @@
 {
     "name": "mikha-dev/dcat-fabricjs",
     "alias": "Fabricjs Editor",
-    "description": "summernote",
+    "description": "Fabricjs Editor",
     "type": "library",
-    "keywords": ["dcat-admin", "extension"],
+    "keywords": ["dcat-admin", "extension", "fabricjs"],
     "homepage": "https://github.com/mikha-dev/dcat-fabricjs",
     "license": "MIT",
     "version": "1.1.1",

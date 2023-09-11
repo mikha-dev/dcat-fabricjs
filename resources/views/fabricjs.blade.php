@@ -2,12 +2,12 @@
 
     <label class="{{$viewClass['label']}} control-label">{!! $label !!}</label>
 
-    <div class="{{$viewClass['field']}}">
+    <div class="{{$viewClass['field']}} shadow-100">
 
         @include('admin::form.error')
 
         <canvas {{$class}} {!! $attributes !!} {{$name}} width="{{$options['width']}}" height="{{$options['height']}}"></canvas>
-        <input type="hidden" name="{{$name}}" value="" />
+        <!-- <input type="hidden" name="{{$name}}" value="" /> -->
         
         @include('admin::form.help-block')
 
@@ -15,7 +15,7 @@
 </div>
 
 <script require="@mikha.dev.fabricjs" init="{!! $selector !!}">
-    var options = {!! admin_javascript_json($options) !!};
+    /*var options = {!! admin_javascript_json($options) !!}; */
 
 /*    options = $.extend({
         callbacks: {
@@ -29,7 +29,13 @@
     }, options); */
 
     var canvas = new fabric.Canvas(id);
-    canvas.setBackgroundImage('{{$bg-image}}}', canvas.renderAll.bind(canvas));    
-    canvas.loadFromJSON("{!!$value!!}", canvas.renderAll.bind(canvas));
+
+    $('input[name="png_template_file"]').change = function(e) {
+
+        alert(e);
+        canvas.setBackgroundImage(e, canvas.renderAll.bind(canvas));
+    }    
+    canvas.setBackgroundImage('{{$bg_image}}', canvas.renderAll.bind(canvas));
+    canvas.loadFromJSON('{!!$value!!}', canvas.renderAll.bind(canvas));
     
 </script>
